@@ -41,8 +41,8 @@ const options = {
     fetch(`https://api.api-ninjas.com/v1/dictionary?word=${currentWord}`, options)
       .then((resp) => resp.json())
       .then((data) => {
-        if (data.definition && data.definition.trim() !== '') {
-          setDefinition(data.definition);
+        if (data.definition) {
+          setDefinition(data.definition)
         } else {
           setDefinition("I don't have a definition for this word yet. Can you help me out by googling it?");
         }
