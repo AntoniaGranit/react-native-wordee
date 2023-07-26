@@ -11,6 +11,7 @@ export default function App() {
 const [word, setWord] = useState(null)
 const [definition, setDefinition] = useState(null)
 const [loading, setLoading] = useState(true)
+const [definitionLoading, setDefinitionLoading] = useState(false);
 const options = {
     method: 'GET',
     headers: {
@@ -21,6 +22,7 @@ const options = {
   // Function to fetch a new word
   const fetchNewWord = () => {
     setLoading(true);
+    setDefinition(null);
     fetch('https://api.api-ninjas.com/v1/randomword', options)
       .then((resp) => resp.json())
       .then((data) => {
@@ -35,11 +37,18 @@ const options = {
 
   // Function to fetch the definition for the current word
   const fetchWordDefinition = (currentWord) => {
+    setDefinitionLoading(true);
     fetch(`https://api.api-ninjas.com/v1/dictionary?word=${currentWord}`, options)
       .then((resp) => resp.json())
-      .then((data) => setDefinition(data.definition))
+      .then((data) => {
+        if (data.definition && data.definition.trim() !== '') {
+          setDefinition(data.definition);
+        } else {
+          setDefinition("I don't have a definition for this word yet. Can you help me out by googling it?");
+        }
+      })
       .catch((error) => console.log(error))
-      .finally(() => setLoading(false));
+      .finally(() => setDefinitionLoading(false));
   };
 
     useEffect(() => {
@@ -59,7 +68,8 @@ const options = {
   return (
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false} style={styles.textContainer}>
-        <Word word={word} definition={definition} loading={loading} />
+        {/* As long as either the word or its definition have not yet rendered, the activity indicator will be shown: */}
+        <Word word={word} definition={definition} loading={loading || definitionLoading} />
     </ScrollView>
     <View style={styles.buttonContainer}>
         <Button fetchNewWord={fetchNewWord} />

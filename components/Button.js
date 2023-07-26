@@ -14,8 +14,8 @@ export default function Button({ fetchNewWord }) {
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    height: 70,
-    paddingTop: 20,
+    height: 80,
+    paddingTop: 0,
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%'
