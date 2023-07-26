@@ -58,7 +58,7 @@ const options = {
   
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.textContainer}>
+      <ScrollView showsVerticalScrollIndicator={false} style={styles.textContainer}>
         <Word word={word} definition={definition} loading={loading} />
     </ScrollView>
     <View style={styles.buttonContainer}>
