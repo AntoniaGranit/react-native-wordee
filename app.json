@@ -4,7 +4,7 @@
     "slug": "wordee",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/wordeeicon.png",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/wordeeicon.png",
@@ -24,7 +24,7 @@
       }
     },
     "web": {
-      "favicon": "./assets/wordeeicon.png"
+      "favicon": "./assets/icon.png"
     }
   }
 }
