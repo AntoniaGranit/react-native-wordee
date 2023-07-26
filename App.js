@@ -72,11 +72,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#052E31',
-    padding: 20,
+    paddingLeft: 30,
+    paddingRight: 30,
+    paddingBottom: 20
   },
   textContainer: {
-    padddingRight: 20,
-    paddingLeft: 20
   },
   buttonContainer: {
     position: 'sticky',
