@@ -3,9 +3,11 @@ import { useFonts } from 'expo-font';
 import { View, ScrollView, StyleSheet } from 'react-native';
 import Word from './components/Word';
 import Button from './components/Button';
+import { API_KEY } from '@env'
 
 export default function App() {
-  const [fontsLoaded] = useFonts({
+const apiKey = API_KEY;
+const [fontsLoaded] = useFonts({
     'Athletics': require('./assets/Athletics.otf'),
   });
 const [word, setWord] = useState(null)
@@ -15,7 +17,7 @@ const [definitionLoading, setDefinitionLoading] = useState(false);
 const options = {
     method: 'GET',
     headers: {
-      'X-Api-Key': 'ZcZTQSOr+cEQvyB3Vfn/gw==ZWASL4qVRX18Pdei',
+      'X-Api-Key': apiKey,
     },
   };
 
